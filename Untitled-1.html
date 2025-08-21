@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Form Detail Pernikahan</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="light only" />
+  <style>
+    /* Fallback font smoothing for nicer look */
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  </style>
+</head>
+<body class="bg-rose-50/40 min-h-screen">
+  <!-- Header -->
+  <header class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="font-semibold text-2xl text-rose-800 tracking-wide">Form Detail Pernikahan</h1>
+        <p class="text-sm text-rose-500">Isilah data di bawah untuk memudahkan persiapan hari bahagia 💍</p>
+      </div>
+      <a href="#" class="hidden sm:inline-flex items-center gap-2 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 text-sm" onclick="document.getElementById('wedding-form').reset();return false;">Reset</a>
+    </div>
+  </header>
+
+  <!-- Form Card -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="bg-white shadow-sm rounded-2xl ring-1 ring-rose-100 overflow-hidden">
+      <div class="p-6 sm:p-8 bg-gradient-to-r from-rose-50 to-rose-100">
+        <h2 class="text-xl font-semibold text-rose-900">Data Mempelai</h2>
+        <p class="text-sm text-rose-600">Nama akan ditampilkan pada undangan & dokumen acara.</p>
+      </div>
+
+      <!-- Alert Placeholder -->
+      <div id="alert" class="hidden mx-6 mt-6 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-rose-800"></div>
+
+      <form id="wedding-form" action="#" method="POST" enctype="multipart/form-data" class="p-6 sm:p-8 space-y-8">
+        <!-- Row: Names -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="bride_name" class="block text-sm font-medium text-gray-700">Nama Mempelai Wanita<span class="text-rose-600">*</span></label>
+            <input id="bride_name" name="bride_name" type="text" required placeholder="Contoh: Diandra" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+          </div>
+          <div>
+            <label for="groom_name" class="block text-sm font-medium text-gray-700">Nama Mempelai Pria<span class="text-rose-600">*</span></label>
+            <input id="groom_name" name="groom_name" type="text" required placeholder="Contoh: Andri" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+          </div>
+        </div>
+
+        <!-- Row: Date / Time / Guests -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label for="event_date" class="block text-sm font-medium text-gray-700">Tanggal Acara<span class="text-rose-600">*</span></label>
+            <input id="event_date" name="event_date" type="date" required class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+          </div>
+          <div>
+            <label for="event_time" class="block text-sm font-medium text-gray-700">Waktu Acara (24 jam)</label>
+            <input id="event_time" name="event_time" type="time" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+          </div>
+          <div>
+            <label for="guest_count" class="block text-sm font-medium text-gray-700">Perkiraan Tamu</label>
+            <input id="guest_count" name="guest_count" type="number" min="1" placeholder="contoh: 250" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+          </div>
+        </div>
+
+        <!-- Venue -->
+        <div>
+          <label for="venue_name" class="block text-sm font-medium text-gray-700">Nama Venue</label>
+          <input id="venue_name" name="venue_name" type="text" placeholder="Contoh: Gedung Balai Kartini" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+        </div>
+        <div>
+          <label for="venue_address" class="block text-sm font-medium text-gray-700">Alamat Venue</label>
+          <textarea id="venue_address" name="venue_address" rows="3" placeholder="Jalan, kota, detail lokasi..." class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200"></textarea>
+        </div>
+
+        <!-- Theme & Colors -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label for="theme" class="block text-sm font-medium text-gray-700">Tema</label>
+            <select id="theme" name="theme" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200">
+              <option value="">Pilih tema</option>
+              <option>Rustic</option>
+              <option>Modern</option>
+              <option>Tradisional</option>
+              <option>Garden</option>
+              <option>Beach</option>
+              <option>Classic</option>
+              <option>Akad Saja</option>
+              <option>Resepsi</option>
+            </select>
+          </div>
+          <div>
+            <label for="dominant_color" class="block text-sm font-medium text-gray-700">Warna Dominan</label>
+            <input id="dominant_color" name="dominant_color" type="color" value="#E11D48" class="mt-1 block w-full h-10 rounded-xl border-gray-300" />
+          </div>
+          <div>
+            <label for="secondary_color" class="block text-sm font-medium text-gray-700">Warna Sekunder</label>
+            <input id="secondary_color" name="secondary_color" type="color" value="#FBCFE8" class="mt-1 block w-full h-10 rounded-xl border-gray-300" />
+          </div>
+        </div>
+
+        <!-- Music & WhatsApp -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="music_preference" class="block text-sm font-medium text-gray-700">Preferensi Musik (Band/DJ/Playlist)</label>
+            <input id="music_preference" name="music_preference" type="text" placeholder="Contoh: Akustik, Dangdut, Top 40" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+          </div>
+          <div>
+            <label for="whatsapp" class="block text-sm font-medium text-gray-700">Kontak WhatsApp</label>
+            <input id="whatsapp" name="whatsapp" type="text" placeholder="Contoh: 08xxxx" class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200" />
+          </div>
+        </div>
+
+        <!-- Special Requests -->
+        <div>
+          <label for="special_requests" class="block text-sm font-medium text-gray-700">Catatan Khusus</label>
+          <textarea id="special_requests" name="special_requests" rows="4" placeholder="Susunan acara, kebutuhan MC, dress code, dll." class="mt-1 block w-full rounded-xl border-gray-300 focus:border-rose-300 focus:ring focus:ring-rose-200"></textarea>
+        </div>
+
+        <!-- Photo Upload -->
+        <div>
+          <label for="prewedding_photo" class="block text-sm font-medium text-gray-700">Foto Prewedding (opsional)</label>
+          <input id="prewedding_photo" name="prewedding_photo" type="file" accept="image/*" class="mt-1 block w-full text-sm" />
+          <p class="text-xs text-gray-500 mt-1">Maks 4MB. Format: JPG, JPEG, PNG, WEBP</p>
+          <div id="photo_preview" class="mt-3 hidden">
+            <img id="photo_img" alt="Preview" class="w-40 h-40 object-cover rounded-2xl ring-1 ring-rose-200" />
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex items-center justify-between pt-2">
+          <span class="inline-flex items-center gap-2 text-sm text-rose-700">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+              <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm6.38-1.03a.75.75 0 0 1 1.06 0l1.72 1.72 3.53-3.53a.75.75 0 1 1 1.06 1.06l-4.06 4.06a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+            Data kamu aman & rahasia
+          </span>
+          <button type="submit" class="inline-flex items-center gap-2 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-400">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            Simpan Detail
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- "Thanks" Section (client-only) -->
+    <div id="thanks" class="hidden mt-8 bg-white rounded-2xl shadow-sm ring-1 ring-rose-100 p-8 text-center">
+      <p class="text-rose-900 text-lg">Detail pernikahan telah tersimpan secara lokal (demo). Semoga persiapan lancar hingga hari H! 💖</p>
+      <button class="mt-6 inline-flex rounded-2xl bg-rose-600 hover:bg-rose-700 text-white px-6 py-3" onclick="resetForm()">Isi Lagi</button>
+    </div>
+  </main>
+
+  <!-- Minimal Client JS (no framework) -->
+  <script>
+    const form = document.getElementById('wedding-form');
+    const alertBox = document.getElementById('alert');
+    const thanks = document.getElementById('thanks');
+
+    // Photo preview
+    const fileInput = document.getElementById('prewedding_photo');
+    const previewWrap = document.getElementById('photo_preview');
+    const previewImg = document.getElementById('photo_img');
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+      if (!file) { previewWrap.classList.add('hidden'); return; }
+      const url = URL.createObjectURL(file);
+      previewImg.src = url;
+      previewWrap.classList.remove('hidden');
+    });
+
+    // Basic front-end validation mirrors server rules
+    function validateColors(hex) {
+      return /^#[0-9A-Fa-f]{6}$/.test(hex);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alertBox.classList.add('hidden');
+      alertBox.innerHTML = '';
+
+      const errors = [];
+      if (!form.bride_name.value.trim()) errors.push('Nama Mempelai Wanita wajib diisi.');
+      if (!form.groom_name.value.trim()) errors.push('Nama Mempelai Pria wajib diisi.');
+      if (!form.event_date.value) errors.push('Tanggal Acara wajib diisi.');
+      if (form.dominant_color.value && !validateColors(form.dominant_color.value)) errors.push('Format Warna Dominan harus #RRGGBB.');
+      if (form.secondary_color.value && !validateColors(form.secondary_color.value)) errors.push('Format Warna Sekunder harus #RRGGBB.');
+      if (form.guest_count.value && (+form.guest_count.value < 1 || +form.guest_count.value > 5000)) errors.push('Perkiraan Tamu harus 1–5000.');
+
+      const photo = fileInput.files?.[0];
+      if (photo && photo.size > 4 * 1024 * 1024) errors.push('Foto Prewedding maksimal 4MB.');
+
+      if (errors.length) {
+        alertBox.innerHTML = `
+          <div class="font-semibold mb-2">Periksa kembali isian Anda:</div>
+          <ul class="list-disc list-inside text-sm space-y-1">${errors.map(e => `<li>${e}</li>`).join('')}</ul>
+        `;
+        alertBox.classList.remove('hidden');
+        window.scrollTo({ top: alertBox.offsetTop - 24, behavior: 'smooth' });
+        return;
+      }
+
+      // Demo only: show thanks section instead of submitting
+      document.querySelector('main > .bg-white').classList.add('hidden');
+      thanks.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function resetForm() {
+      form.reset();
+      document.querySelector('main > .bg-white').classList.remove('hidden');
+      thanks.classList.add('hidden');
+      previewWrap.classList.add('hidden');
+      alertBox.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
